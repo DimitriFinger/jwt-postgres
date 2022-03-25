@@ -1,3 +1,6 @@
-const a: number = 5;
+import app from './app';
+import 'dotenv/config';
 
-console.log(a)
+app.listen(process.env.SERVER_PORT, function () {
+    console.log('Server running on port ' + process.env.SERVER_PORT)
+});
