@@ -1,8 +1,8 @@
 {
     "watch": ["src"],
-    "ext":"ts,js",
+    "ext":"js",
     "execMap": {
-        "ts": "sucrase-node src/server.ts"
+        "ts": "sucrase-node src/server.js"
     }
 
 }
