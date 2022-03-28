@@ -1,21 +1,5 @@
 const db = require('../database/index');
 
-
-// class UserDAO {
-//     async createUser(firstName, lastName, email) {
-
-//         console.log(firstName + ' ' + lastName + ' ' + email);
-//         const [id] = await db('users')
-//         .insert({
-//             email: email,
-//             first_name: firstName,
-//             last_name: lastName
-//         }).returning('id');
-
-//         return id;
-//     }
-// }
-
 class UserDAO {
     async createUser(firstName, lastName, email) {
         const [id] = await db('users')
@@ -27,6 +11,59 @@ class UserDAO {
             .returning('id');
 
         return id;
+    }
+
+
+    async getAllUsers() {
+        const users = await db('users');
+        return users;
+    }
+
+
+    async getUser(user_id) {
+        const user = await db('users')
+            .where({ id: user_id });
+
+        if (!user.length) {
+            return { error: 'User not found' };
+        }
+        return user;
+    }
+
+
+    async deleteUser(user_id) {
+        const user = await db('users')
+            .where({ id: user_id });
+
+        if (!user.length) {
+            return { error: 'Cannot delete! User not found!' }
+        }
+
+        await db('users')
+            .where({ id: user_id })
+            .del();
+
+        return { message: 'User deleted!' }
+    }
+
+
+    async updateUser(user_id, firstName, lastName, email) {
+        const user = await db('users')
+            .where({ id: user_id });
+
+        if (!user.length) {
+            return { error: 'Cannot update! User not found!' }
+        }
+
+        await db('users')
+            .where({ id: user_id })
+            .update({
+                email,
+                first_name: firstName,
+                last_name: lastName
+            })
+
+        return { message: 'User updated!' }
     }
 }
 
