@@ -1,5 +1,5 @@
 const knex = require('knex');
-const knexfile = require('./knexfile');
+const knexfile = require('../services/knexfile');
 
 
 const db = knex(knexfile.development);
