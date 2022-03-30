@@ -2,13 +2,31 @@ import { FaBars } from 'react-icons/fa';
 import { NavLink as Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+
+export const Logo = styled.div`
+display: flex;
+justify-content: flex;
+align-items: center;
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.8rem;
+  padding-bottom: 5px;
+  margin-left: 15px;
+  margin-right: 25px;
+`;
+
 export const Nav = styled.nav`
-  background: #000;
-  height: 80px;
+  background: #212329;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   z-index: 10;
   justify-content: flex-start;
+  
+  @media screen and (max-width: 768px){
+    position: relative;
+    width: 100%;
+  }
 `;
 
 export const NavLink = styled(Link)`
@@ -18,10 +36,26 @@ export const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
+  transition: all 0.1s ease-in-out;
   cursor: pointer;
   &:active {
     color: red;
+    font-weight: bold;
+  };
+  &:hover{
+    color: #f9423d;    
+    font-size: 18px;
+    transition: all 0.1s ease-in-out;
   }
+
+  @media screen and (max-width: 768px){
+    text-align: center;
+    line-height: 60px;
+    width: 100%;
+    display: table;
+  };
+
+  
 `;
 
 export const Bars = styled(FaBars)`
@@ -32,7 +66,7 @@ export const Bars = styled(FaBars)`
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-100%, 75%);
+    transform: translate(-50%, 50%);
     font-size: 1.8rem;
     cursor: pointer;
   }
@@ -45,24 +79,34 @@ export const NavMenu = styled.div`
   width: 100vw;
   white-space: nowrap;
   @media screen and (max-width: 768px) {
-    display: none;
+    display: grid;
+    grid-template-columns: auto;
+    background-color: #212329;
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    transition: all 0.5s ease;
+    max-height: ${({ isOpen }) => (isOpen ? '300px' : '0')};
+    margin: 1px 0;
+
   }
 `;
 
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
-  margin-right: 24px;
+  margin-right: 25px;
   justify-content: flex-end;
   width: 100vw;
   @media screen and (max-width: 768px) {
-    display: none;
+    padding-right: 30px;
   }
 `;
 
 export const NavBtnLink = styled(Link)`
   border-radius: 4px;
-  background: #256ce1;
+  background: #f9423d;
   padding: 10px 22px;
   color: #fff;
   outline: none;
@@ -73,7 +117,8 @@ export const NavBtnLink = styled(Link)`
   margin-left: 24px;
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: #fff;
-    color: #010606;
+    background-color: transparent;
+    border: 2px solid #f9423d;
+    margin-right: -6px;
   }
 `;

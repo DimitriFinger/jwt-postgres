@@ -1,23 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Nav,
     NavLink,
     Bars,
     NavMenu,
     NavBtn,
-    NavBtnLink
+    NavBtnLink,
+    Logo
 } from './styled';
 
 const NavBar = () => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <>
             <Nav>
-                <NavLink to='/'>
-                    <h1>logo</h1>
-                </NavLink>
-                <Bars />
-                <NavMenu>
-                    <NavLink to='/about' activeStyle>
+
+                <Logo>dimitri.finger</Logo>
+
+                <Bars onClick={() => setIsOpen(!isOpen)} />
+                <NavMenu isOpen={isOpen}>
+                    <NavLink to='/welcome' activeStyle>
                         About
                     </NavLink>
                     <NavLink to='/services' activeStyle>
