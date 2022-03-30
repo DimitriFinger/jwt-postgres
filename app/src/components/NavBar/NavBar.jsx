@@ -8,7 +8,6 @@ import {
     NavBtnLink,
     Logo
 } from './styled';
-
 const NavBar = () => {
 
     const [isOpen, setIsOpen] = useState(false);
@@ -21,16 +20,16 @@ const NavBar = () => {
 
                 <Bars onClick={() => setIsOpen(!isOpen)} />
                 <NavMenu isOpen={isOpen}>
-                    <NavLink to='/welcome' activeStyle>
+                    <NavLink isOpen={isOpen} to='/login' onClick={() => setIsOpen(!isOpen)}>
                         About
                     </NavLink>
-                    <NavLink to='/services' activeStyle>
+                    <NavLink isOpen={isOpen} to='/services'>
                         Services
                     </NavLink>
-                    <NavLink to='/contact-us' activeStyle>
+                    <NavLink isOpen={isOpen} to='/contact-us'>
                         Contact Us
                     </NavLink>
-                    <NavLink to='/sign-up' activeStyle>
+                    <NavLink isOpen={isOpen} to='/sign-up'>
                         Sign Up
                     </NavLink>
                 </NavMenu>

@@ -1,11 +1,35 @@
 import React from 'react';
-import NavBar from '../../components/NavBar/NavBar';
+import { LoginContainer, LoginPageContainer, InputContainer, LoginButton, ForgotPassword } from './styled';
+import TextField from '@mui/material/TextField';
 
 const LoginPage = () => {
     return (
-        <div>
-            blablabla
-        </div>
+        <>
+            <LoginPageContainer>
+                <LoginContainer>
+                    <InputContainer>
+                        <TextField
+                            id="outlined-password-input"
+                            label="Email"
+                            autoComplete="current-password"
+                        />
+                        <TextField
+                            id="outlined-password-input"
+                            label="Password"
+                            type="password"
+                            autoComplete="current-password"
+                            fullWidth
+                        />
+                    </InputContainer>
+                    <LoginButton>
+                        Login
+                    </LoginButton>
+                    <ForgotPassword>
+                        Esqueceu a senha?
+                    </ForgotPassword>
+                </LoginContainer>
+            </LoginPageContainer>
+        </>
     )
 }
 
