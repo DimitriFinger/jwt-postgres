@@ -1,7 +1,5 @@
 const bcrypt = require('bcryptjs');
 
-
-
 class AuthService {
     createPasswordHash(password) {
         return bcrypt.hash(password, 8);

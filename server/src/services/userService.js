@@ -11,31 +11,18 @@ const authService = require('./authService');
 "*/
 
 class UserService {
-    createUser(personDto) {
+    async createUser(personDto) {
         const { email, password, firstName, lastName } = personDto;
-        const user = userDAO.getUserByEmail(email);
+        const user = await userDAO.getUserByEmail(email);
 
-        user
-            .then(res => {
-                if (!res) {
-                    var encryptedPassword = authService.createPasswordHash(password);
-                    encryptedPassword
-                        .then(newPassword => {
-                            const new_user = userDAO.createUser(email, newPassword, firstName, lastName);
-                            new_user.then(res => {
-                                return res
-                            });
-                        });
+        if (user) {
+            return { message: `User ${email} already exists.` }
+        }
 
-
-                } else {
-                    console.log('ja existe');
-                    return false
-                }
-            });
-
-
-
+        if (!user) {
+            var encryptedPassword = await authService.createPasswordHash(password);
+            return userDAO.createUser(email, encryptedPassword, firstName, lastName);
+        }
     }
 
     getAllUsers() {
