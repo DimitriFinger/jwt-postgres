@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LoginPageContainer = styled.div`
+export const LoginMainContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,13 +21,24 @@ export const LoginContainer = styled.div`
 
 `;
 
+export const WelcomeTitle = styled.h1`
+    font-size: 2.5rem; 
+    color: #212329;   
+
+`;
+
+export const SecondTitle = styled.h1`
+    font-size: 0.8rem;
+    margin-top: 5px;
+`;
+
 export const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 250px;
     height: 130px;
-    margin-top: 80px;
+    margin-top: 30px;
 `;
 
 export const LoginButton = styled.div`
@@ -40,16 +51,22 @@ export const LoginButton = styled.div`
     padding-top: 2px;
     border-radius: 5px;
     font-weight: bold;
-    color: #0303039a;
+    color: #03030389;
     cursor: pointer;
-    border: 2px transparent black;
-    background-color: rgb(249, 66, 61, 0.8);
+    transition: all 0.2s ease-in-out;
+    background-color: #f9423d;
+    
+    &:hover{    
+        background-color: rgb(249, 66, 61, 0.8);
+        transition: all 0.2s ease-in-out;
+    }
 `;
 
 export const ForgotPassword = styled.div`
     color: #0303039a;
     position: relative;
-    top: 30px;
+    top: 33px;
     font-size: 13px;
     font-weight: bold;
+    cursor: pointer;
 `;

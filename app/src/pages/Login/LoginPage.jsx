@@ -1,12 +1,18 @@
 import React from 'react';
-import { LoginContainer, LoginPageContainer, InputContainer, LoginButton, ForgotPassword } from './styled';
+import { LoginContainer, LoginMainContainer, InputContainer, LoginButton, ForgotPassword, WelcomeTitle, SecondTitle } from './styled';
 import TextField from '@mui/material/TextField';
 
 const LoginPage = () => {
     return (
         <>
-            <LoginPageContainer>
+            <LoginMainContainer>
                 <LoginContainer>
+                    <WelcomeTitle>
+                        WELCOME
+                    </WelcomeTitle>
+                    <SecondTitle>
+                        Login to continue.
+                    </SecondTitle>
                     <InputContainer>
                         <TextField
                             id="outlined-password-input"
@@ -22,13 +28,13 @@ const LoginPage = () => {
                         />
                     </InputContainer>
                     <LoginButton>
-                        Login
+                        Entrar
                     </LoginButton>
                     <ForgotPassword>
                         Esqueceu a senha?
                     </ForgotPassword>
                 </LoginContainer>
-            </LoginPageContainer>
+            </LoginMainContainer>
         </>
     )
 }
