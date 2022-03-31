@@ -4,22 +4,21 @@
   "main": "JWT-Postgres-Server",
   "license": "MIT",
   "scripts": {
-    "migrate" : "knex migrate:latest --knexfile src/database/knexfile.js",
-    "unmigrate" : "knex migrate:rollback --knexfile src/database/knexfile.js",
+    "migrate": "knex migrate:latest --knexfile src/database/knexfile.js",
+    "unmigrate": "knex migrate:rollback --knexfile src/database/knexfile.js",
     "dev": "nodemon src/server.js",
     "build": ""
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.2",
     "cors": "^2.8.5",
     "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^1.0.4",
     "pg": "^8.7.3"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.12",
-    "@types/express": "^4.17.13",
-    "@types/node": "^17.0.23",
-    "@types/pg": "^8.6.5",
     "dotenv": "^16.0.0",
     "nodemon": "^2.0.15",
     "sucrase": "^3.20.3",

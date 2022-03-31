@@ -1,15 +1,16 @@
 const db = require('../database/index');
 
 class UserDAO {
-    async createUser(firstName, lastName, email) {
+    async createUser(email, password, firstName, lastName) {
         const [id] = await db('users')
             .insert({
                 email,
+                password,
                 first_name: firstName,
                 last_name: lastName,
             })
             .returning('id');
-
+        console.log('id aqui', id);
         return id;
     }
 
@@ -27,6 +28,17 @@ class UserDAO {
         if (!user.length) {
             return { error: 'User not found' };
         }
+        return user;
+    }
+
+    async getUserByEmail(user_email) {
+        const user = await db('users').
+            where({ email: user_email });
+
+        if (!user.length) {
+            return false
+        }
+
         return user;
     }
 

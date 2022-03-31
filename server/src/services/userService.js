@@ -1,9 +1,41 @@
 const userDAO = require('../dao/userDao');
+const authService = require('./authService');
+
+
+/*" 
+    "email":
+    "password"
+    "firstName"
+    "lastName"
+
+"*/
 
 class UserService {
     createUser(personDto) {
-        const { firstName, lastName, email } = personDto;
-        return userDAO.createUser(firstName, lastName, email);
+        const { email, password, firstName, lastName } = personDto;
+        const user = userDAO.getUserByEmail(email);
+
+        user
+            .then(res => {
+                if (!res) {
+                    var encryptedPassword = authService.createPasswordHash(password);
+                    encryptedPassword
+                        .then(newPassword => {
+                            const new_user = userDAO.createUser(email, newPassword, firstName, lastName);
+                            new_user.then(res => {
+                                return res
+                            });
+                        });
+
+
+                } else {
+                    console.log('ja existe');
+                    return false
+                }
+            });
+
+
+
     }
 
     getAllUsers() {

@@ -1,10 +1,12 @@
 const userService = require('../services/userService');
 
+
 class UserController {
     async createUser(req, res) {
         try {
-            const id = await userService.createUser(req.body);
-            return res.status(201).json(id);
+            const user = await userService.createUser(req.body);
+            console.log(user)
+            return res.status(201).json(user);
         } catch (err) {
             console.error(err);
             return res.status(500).json({ error: 'Internal service error!' });
