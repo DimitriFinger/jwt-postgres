@@ -30,19 +30,16 @@ class UserService {
     }
 
     getUser(user) {
-        const { id } = user;
-        return userDAO.getUser(id);
+        return userDAO.getUser(user.id);
     }
 
     deleteUser(user) {
-        const { id } = user;
-        return userDAO.deleteUser(id);
+        return userDAO.deleteUser(user.id);
     }
 
     updateUser(user, personDto) {
-        const { id } = user;
         const { firstName, lastName, email } = personDto;
-        return userDAO.updateUser(id, firstName, lastName, email);
+        return userDAO.updateUser(user.id, firstName, lastName, email);
     }
 }
 

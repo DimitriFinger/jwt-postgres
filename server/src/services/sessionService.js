@@ -1,20 +1,36 @@
 const jwt = require('jsonwebtoken');
-const JsonWebTokenError = require('jsonwebtoken/lib/JsonWebTokenError');
+const { JsonWebTokenError } = require('jsonwebtoken/lib/JsonWebTokenError');
 const authService = require('./authService');
-const authConfig = require('./../config/authConfig');
 const userDAO = require('../dao/userDao');
+require('dotenv');
 
 
 
 class SessionService {
-    createSession(acess_data) {
+    async createSession(acess_data) {
         const { email, password } = acess_data;
 
-        const user = userDAO.getUserByEmail(email);
-
-        if (!user.length) {
-            return { error: 'User not found' };
+        const user = await userDAO.getUserByEmail(email);
+        if (!user) {
+            return { error: 'Invalid email / password.' };
         }
+
+        const passwordCheck = await authService.checkPassword(user[0], password);
+
+        if (!passwordCheck) {
+            return { error: 'Invalid email / password.' }
+        }
+
+        const { id } = user[0];
+
+        return {
+            user: {
+                id,
+                email
+            },
+            token: jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.SESSION_EXPIRES })
+        };
+
 
 
     }

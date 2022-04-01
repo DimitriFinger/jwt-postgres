@@ -10,7 +10,7 @@ class UserDAO {
                 last_name: lastName,
             })
             .returning('id');
-        console.log('id aqui', id);
+
         return id;
     }
 

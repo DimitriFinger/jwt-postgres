@@ -1,13 +1,13 @@
-const sessionService = require('./../services/authService');
+const sessionService = require('./../services/sessionService');
 
 class SessionController {
     async createSession(req, res) {
         try {
             const login = await sessionService.createSession(req.body);
-            return
+            return res.status(200).json(login);
         } catch (err) {
             console.error(err);
-            console.error({ error: 'Internal service error!' })
+            return res.status(500).json({ error: 'Internal service error!' })
         }
 
     }
