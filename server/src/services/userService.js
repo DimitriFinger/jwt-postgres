@@ -2,14 +2,6 @@ const userDAO = require('../dao/userDao');
 const authService = require('./authService');
 
 
-/*" 
-    "email":
-    "password"
-    "firstName"
-    "lastName"
-
-"*/
-
 class UserService {
     async createUser(personDto) {
         const { email, password, firstName, lastName } = personDto;
