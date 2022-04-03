@@ -23,7 +23,7 @@ const NavBar = () => {
                     <NavLink isOpen={isOpen} to='/login' onClick={() => setIsOpen(!isOpen)}>
                         About
                     </NavLink>
-                    <NavLink isOpen={isOpen} to='/services'>
+                    <NavLink isOpen={isOpen} to='/services' onClick={() => setIsOpen(!isOpen)}>
                         Services
                     </NavLink>
                     <NavLink isOpen={isOpen} to='/contact-us'>
