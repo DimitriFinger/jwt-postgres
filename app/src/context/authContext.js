@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [loginError, setLoginError] = useState(false);
 
     useEffect(() => {
         const user = localStorage.getItem('user');
@@ -23,15 +24,17 @@ export const AuthProvider = ({ children }) => {
     const login = async (email, password) => {
         const response = await createSession(email, password);
         console.log(response);
+        if (!response.data.loginError) {
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            localStorage.setItem('token', response.data.token);
 
-        localStorage.setItem('user', JSON.stringify(response.data.user));
-        localStorage.setItem('token', response.data.token);
+            api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
 
-        api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
-        console.log(api.defaults.headers.Authorization);
-
-        setUser(response.data.user);
-        navigate('/mainpage');
+            setUser(response.data.user);
+            navigate('/mainpage');
+        } else {
+            setLoginError(true);
+        }
     }
 
     const logout = () => {
@@ -50,6 +53,7 @@ export const AuthProvider = ({ children }) => {
                 authenticated: !!user,
                 user,
                 loading,
+                loginError,
                 login,
                 logout
             }}>

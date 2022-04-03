@@ -1,16 +1,16 @@
 import React, { useContext, useState } from 'react';
-import { LoginContainer, LoginMainContainer, InputContainer, LoginButton, ForgotPassword, WelcomeTitle, SecondTitle } from './styled';
+import { LoginContainer, LoginMainContainer, InputContainer, LoginButton, ForgotPassword, WelcomeTitle, SecondTitle, BadLogin } from './styled';
 import TextField from '@mui/material/TextField';
 import { AuthContext } from '../../context/authContext';
 
 const LoginPage = () => {
 
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
-    const { login } = useContext(AuthContext);
+    const [password, setPassword] = useState('');
+    const { login, loginError } = useContext(AuthContext);
 
     const handleLogin = async () => {
-        console.log(email, password);
+
         login(email, password);
 
     }
@@ -25,6 +25,7 @@ const LoginPage = () => {
                     <SecondTitle>
                         Login to continue.
                     </SecondTitle>
+                    {loginError ? <BadLogin>Incorrect username or password.</BadLogin> : null}
                     <InputContainer>
                         <TextField
                             id="outlined-password-input"

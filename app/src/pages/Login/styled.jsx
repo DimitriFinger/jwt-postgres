@@ -38,7 +38,7 @@ export const InputContainer = styled.div`
     justify-content: space-between;
     width: 250px;
     height: 130px;
-    margin-top: 30px;
+    margin-top: 40px;
 `;
 
 export const LoginButton = styled.div`
@@ -65,8 +65,15 @@ export const LoginButton = styled.div`
 export const ForgotPassword = styled.div`
     color: #0303039a;
     position: relative;
-    top: 33px;
+    top: 20px;
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;
+`;
+
+export const BadLogin = styled.h1`
+    position: absolute;
+    font-size: 0.8rem;
+    margin-top: -140px;
+    color: #d03838
 `;
