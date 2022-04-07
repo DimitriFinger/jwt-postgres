@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const { JsonWebTokenError } = require('jsonwebtoken/lib/JsonWebTokenError');
 const authService = require('./authService');
 const userDAO = require('../dao/userDao');
 require('dotenv');

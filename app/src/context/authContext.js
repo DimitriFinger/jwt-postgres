@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
             api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
 
             setUser(response.data.user);
-            navigate('/mainpage');
+            navigate('/home');
         } else {
             setLoginError(true);
         }

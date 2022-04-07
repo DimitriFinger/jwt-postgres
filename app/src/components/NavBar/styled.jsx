@@ -12,7 +12,6 @@ export const Logo = styled.div`
   font-size: 1.8rem;
   padding-bottom: 5px;
   margin-left: 15px;
-  margin-right: 25px;
 `;
 
 export const Nav = styled.nav`
@@ -115,7 +114,6 @@ export const NavBtnLink = styled(Link)`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
-  margin-left: 24px;
   &:hover {
     transition: all 0.2s ease-in-out;
     background-color: transparent;
