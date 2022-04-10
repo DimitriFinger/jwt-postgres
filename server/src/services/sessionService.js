@@ -11,13 +11,13 @@ class SessionService {
 
         const user = await userDAO.getUserByEmail(email);
         if (!user) {
-            return { error: 'Invalid email / password.' };
+            return { error: 'Invalid email / password.', loginError: true };
         }
 
         const passwordCheck = await authService.checkPassword(user[0], password);
 
         if (!passwordCheck) {
-            return { error: 'Invalid email / password.' }
+            return { error: 'Invalid email / password.', loginError: true };
         }
 
         const { id } = user[0];

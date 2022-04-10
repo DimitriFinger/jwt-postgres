@@ -32,6 +32,7 @@ export const AuthProvider = ({ children }) => {
 
             setUser(response.data.user);
             navigate('/home');
+
         } else {
             setLoginError(true);
         }
