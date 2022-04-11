@@ -12,6 +12,18 @@ services:
       - "5432:5432"
     volumes:
       - ./data:/var/lib/postgresql/data
+
+  nginx:
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "80:80"
+
   api:
     container_name: backend_container
     restart: on-failure
@@ -23,6 +35,7 @@ services:
       - ./server:/app
     ports:
       - "5000:5000"
+
   client:
     container_name: frontend_container
     stdin_open: true

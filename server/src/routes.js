@@ -5,14 +5,14 @@ const express = require('express');
 
 const router = express.Router();
 
-router.post('/session', sessionController.createSession);
+router.post('/api/session', sessionController.createSession);
 
 router.use(authValidation);
 
-router.post('/user', userController.createUser);
-router.get('/user', userController.getAllUsers);
-router.get('/user/:id', userController.getUser);
-router.delete('/user/:id', userController.deleteUser);
-router.put('/user/:id', userController.updateUser);
+router.post('/api/user', userController.createUser);
+router.get('/api/user', userController.getAllUsers);
+router.get('/api/user/:id', userController.getUser);
+router.delete('/api/user/:id', userController.deleteUser);
+router.put('/api/user/:id', userController.updateUser);
 
 module.exports = router;
