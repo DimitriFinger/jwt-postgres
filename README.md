@@ -19,6 +19,8 @@ This app consist in a dockerized login system built with:
 
 You can find how install Docker in your OS [here](https://docs.docker.com/engine/install/) and Docker-compose [here](https://docs.docker.com/compose/install/).
 
+Create a `.env` file in `/server` folder and set `PORT` and `JWT Password` using `.env.example` example.
+
 ## How to run
 
 In the root folder run the command:
