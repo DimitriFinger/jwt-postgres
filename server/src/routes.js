@@ -6,10 +6,10 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/api/session', sessionController.createSession);
+router.post('/api/user', userController.createUser);
 
 router.use(authValidation);
 
-router.post('/api/user', userController.createUser);
 router.get('/api/user', userController.getAllUsers);
 router.get('/api/user/:id', userController.getUser);
 router.delete('/api/user/:id', userController.deleteUser);
