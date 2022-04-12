@@ -25,7 +25,7 @@ const NavBar = () => {
             <>
                 <Nav>
 
-                    <Logo>dimitri.finger</Logo>
+                    <Logo>jwt-postgres</Logo>
 
                     <Bars onClick={() => setIsOpen(!isOpen)} />
                     <NavMenu isOpen={isOpen}>
