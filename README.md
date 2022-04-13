@@ -2,12 +2,12 @@
 
 This app consist in a dockerized login system built with:
 
-- ReactJS and styled-components: frontend application.
-- NodeJS: Express used on backend.
-- Knex: query builder for database.
-- JWT: authentication system.
-- PostgreSQL: database to store user data. 
-- Nginx: proxy server.
+- ReactJS and styled-components
+- NodeJS
+- Knex
+- JWT
+- PostgreSQL
+- Nginx
 - Docker
  
 
