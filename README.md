@@ -33,7 +33,7 @@ docker-compose up --build
 
 ## Add first user
 
-To add the first user in database, you should send a `POST` request to `localhost:5000/api/user` adding the following block to body request
+To add the first user in database, you must send a `POST` request to `localhost:5000/api/user` adding the following block to body request
 
 ```bash
 {
